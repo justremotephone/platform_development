@@ -18,8 +18,8 @@ echo
 
 function adb_get_product_device() {
   local candidate=`adb shell getprop ro.hardware | tr -d '\r\n'`
-  if [[ "$candidate" =~ ^(goldfish|ranchu)$ ]]; then
-    # Emulator builds use product.device for OUT folder
+  if [[ "$candidate" =~ ^(goldfish|ranchu|qcom)$ ]]; then
+    # Emulator builds and JF devices use product.device for OUT folder
     candidate=`adb shell getprop ro.product.device | tr -d '\r\n'`
   fi
   echo $candidate
